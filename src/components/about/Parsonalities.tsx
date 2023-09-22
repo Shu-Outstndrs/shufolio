@@ -9,7 +9,7 @@ export const Parsonalities = (props: any) => {
   }
 
   return (
-    <div className="my-24 text-xl">
+    <div className="my-24 text-lg">
       <div className="flex justify-between">
         <p className="w-32">{props.left}</p>
         <p>{displayPoint}%</p>

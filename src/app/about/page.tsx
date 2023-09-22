@@ -1,11 +1,23 @@
+"use client";
+
 import { Title } from "@/components/Title";
 import { FilledBar } from "@/components/about/FilledBar";
 import { Parsonalities } from "@/components/about/Parsonalities";
 import { Progress } from "@/components/ui/progress";
 import { Slider } from "@/components/ui/slider";
+import { useCallback, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Skills } from "@/components/about/Skills";
+
+export type aboutShuType = {
+  age: number;
+  person: { left: string; right: string; point: number }[];
+  skill: { left: string; point: number; id: number };
+};
 
 export default function About() {
-  const aboutShu = {
+  const [aboutShu, setAboutShu] = useState<any>({
     age: 14,
     person: [
       { left: "外向型", right: "内向型", point: 77 },
@@ -15,55 +27,57 @@ export default function About() {
       { left: "自己主張型", right: "慎重型", point: 60 },
     ],
     skill: [
-      { left: "HTML", point: 5 },
-      { left: "CSS", point: 3 },
-      { left: "TailwindCSS", point: 4 },
-      { left: "JavaScript", point: 3 },
-      { left: "React", point: 2 },
-      { left: "Next.js", point: 3 },
-      { left: "Supabase", point: 0 },
+      { left: "HTML", point: 5, id: 0 },
+      { left: "CSS", point: 3, id: 1 },
+      { left: "TailwindCSS", point: 4, id: 2 },
+      { left: "JavaScript", point: 3, id: 3 },
+      { left: "React", point: 2, id: 4 },
+      { left: "Next.js", point: 3, id: 5 },
+      { left: "Supabase", point: 0, id: 6 },
     ],
-  };
+  });
 
   return (
     <>
       <Title>About</Title>
       <div className="w-64 my-16 mx-auto relative">
         <img
-          src="./Shu-maru.png"
+          src="./Shu-maru.webp"
           alt="Shu-icon"
           className={`w-64 h-64 border-2 rounded-full border-zinc-300 z-[-1] `}
         />
       </div>
       <div className="md:mx-8 mx-4">
-        <div className="my-24 text-xl">
+        <motion.div
+          className="my-24 text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2, delay: 0.4 }}
+        >
           <div className="flex justify-between">
             <p>年齢</p> <p>{aboutShu.age}</p>
           </div>
           <Progress value={aboutShu.age} className="w-full shadow-sm" />
-        </div>
+        </motion.div>
         <div className="my-32">
-          {aboutShu.person.map((data, i) => {
+          {aboutShu.person.map((data: any, i: any) => {
             return (
-              <Parsonalities
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: (i + 1) * 0.2, delay: 0.5 }}
                 key={i}
-                left={data.left}
-                right={data.right}
-                point={data.point}
-              />
+              >
+                <Parsonalities
+                  left={data.left}
+                  right={data.right}
+                  point={data.point}
+                />
+              </motion.div>
             );
           })}
         </div>
-        {aboutShu.skill.map((data, i) => {
-          return (
-            <div className="my-24 text-xl" key={i}>
-              <div className="flex justify-between">
-                <p>{data.left}</p> <p>{data.point}</p>
-              </div>
-              <Progress value={data.point * 20} className="w-full shadow-sm" />
-            </div>
-          );
-        })}
+        <Skills aboutShu={aboutShu} setAboutShu={setAboutShu} />
       </div>
     </>
   );

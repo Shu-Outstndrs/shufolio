@@ -1,9 +1,5 @@
 import { Title } from "@/components/Title";
 
 export default function Home() {
-  return (
-    <>
-      <Title>Shu Outstndrs</Title>
-    </>
-  );
+  return <Title>Home</Title>;
 }
