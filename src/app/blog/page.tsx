@@ -4,8 +4,6 @@ import fs from "fs-extra";
 import articles from "../../../.feed/items.json";
 
 export default function Blog() {
-  console.log(articles);
-
   return (
     <main>
       <Title>Blog</Title>
