@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Transition } from "react-transition-group";
+import { ThemeSlider } from "./ThemeSlider";
 
 export const Header = () => {
   const classData = { textSize: "text-lg" };
@@ -15,18 +16,16 @@ export const Header = () => {
   ];
 
   return (
-    <div className="w-screen flex justify-center py-4">
-      <div className="flex">
-        {linkData.map((data, i) => {
-          return (
-            <Link href={data.href} key={i}>
-              <Button variant="ghost" className={classData.textSize}>
-                {data.name}
-              </Button>
-            </Link>
-          );
-        })}
-      </div>
+    <div className="py-4">
+      {linkData.map((data, i) => {
+        return (
+          <Link href={data.href} key={i}>
+            <Button variant="ghost" className={classData.textSize}>
+              {data.name}
+            </Button>
+          </Link>
+        );
+      })}
     </div>
   );
 };

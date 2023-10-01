@@ -44,41 +44,40 @@ export default function About() {
         <img
           src="./Shu-maru.webp"
           alt="Shu-icon"
-          className={`w-64 h-64 border-2 rounded-full border-zinc-300 z-[-1] `}
+          className={`w-64 h-64 border-2 rounded-full border-zinc-300 z-[-1]`}
         />
       </div>
-      <div className="md:mx-8 mx-4">
-        <motion.div
-          className="my-24 text-lg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: 0.4 }}
-        >
-          <div className="flex justify-between">
-            <p>年齢</p> <p>{aboutShu.age}</p>
-          </div>
-          <Progress value={aboutShu.age} className="w-full shadow-sm" />
-        </motion.div>
-        <div className="my-32">
-          {aboutShu.person.map((data: any, i: any) => {
-            return (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: (i + 1) * 0.2, delay: 0.5 }}
-                key={i}
-              >
-                <Parsonalities
-                  left={data.left}
-                  right={data.right}
-                  point={data.point}
-                />
-              </motion.div>
-            );
-          })}
+
+      <motion.section
+        className="my-24 text-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2, delay: 0.4 }}
+      >
+        <div className="flex justify-between">
+          <p>年齢</p> <p>{aboutShu.age}</p>
         </div>
-        <Skills aboutShu={aboutShu} setAboutShu={setAboutShu} />
-      </div>
+        <Progress value={aboutShu.age} className="w-full shadow-sm" />
+      </motion.section>
+      <section className="my-32">
+        {aboutShu.person.map((data: any, i: any) => {
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: (i + 1) * 0.2, delay: 0.5 }}
+              key={i}
+            >
+              <Parsonalities
+                left={data.left}
+                right={data.right}
+                point={data.point}
+              />
+            </motion.div>
+          );
+        })}
+      </section>
+      <Skills aboutShu={aboutShu} setAboutShu={setAboutShu} />
     </>
   );
 }

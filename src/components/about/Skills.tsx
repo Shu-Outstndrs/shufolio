@@ -93,21 +93,28 @@ export const Skills = ({
   };
 
   return (
-    <>
+    <section>
       <div>
         <p>並べ替え</p>
         <div className="flex mt-2">
-          <Button variant="outline" onClick={handleDefault}>
+          <Button
+            variant="outline"
+            onClick={handleDefault}
+            className="text-zinc-700"
+          >
             Default {defaultSortArrow}
           </Button>
-          <Button variant="outline" onClick={handleScore}>
+          <Button
+            variant="outline"
+            onClick={handleScore}
+            className="text-zinc-700"
+          >
             Score {scoreSortArrow}
           </Button>
         </div>
       </div>
       <div className="mt-12">
         {aboutShu.skill.map((data: shuSkill, i: number) => {
-          console.log(data.point);
           return (
             <div className="mb-24 text-lg" key={i}>
               <div className="flex justify-between">
@@ -127,6 +134,6 @@ export const Skills = ({
           );
         })}
       </div>
-    </>
+    </section>
   );
 };
