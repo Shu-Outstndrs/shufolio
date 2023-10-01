@@ -6,16 +6,6 @@ import MotionWrapper from "@/components/MotionWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Shu / Outstndrs",
-  description: "しゅーう / チーム逸般人",
-  openGraph: {
-    title: "Shu / Outstndrs",
-    description: "しゅーう / チーム逸般人",
-    images: ["/Shu-maru.webp"],
-  },
-};
-
 export default function RootLayout({
   children,
 }: {
