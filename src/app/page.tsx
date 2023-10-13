@@ -7,6 +7,7 @@ export default function Home() {
       <Title>Shu / Outstndrs</Title>
       <SNS />
       <p>こんにちは、14歳のしゅうです。</p>
+      <p>Web制作とかやってます。</p>
     </>
   );
 }
